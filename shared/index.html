@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="assets/css/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="assets/js/leaflet.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <title>Locals</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      html, body, #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-role='page' data-id='quotes'>
+      <div data-role='panel' data-theme='a' data-display="overlay" data-position-fixed='true' id='menu'>
+        <ul data-role='listview' data-theme='a' data-iconpos='right' data-filter-iconpos='right' data-filter='true' data-filter-theme='a' data-filter-placeholder='مناطق ...' data-inset='true'>
+          <li>فرمانیه</li>
+          <li>فرشته</li>
+          <li>قیطریه</li>
+          <li>جردن</li>
+          <li>میرداماد</li>
+          <li>پاسداران</li>
+          <li>سعادت اباد</li>
+          <li>شهرک غرب</li>
+          <li>تجریش</li>
+          <li>ونک</li>
+          <li>ظفر</li>
+        </ul>
+      </div>
+      <div data-role='header' data-theme='a' data-position='fixed'>
+        <a data-role='button' data-icon='bars' data-inline="true" data-iconpos='right' href='#menu'>لیست</a>
+        <div class='search'>
+          <input type="search" name="business" id="search" value="" placeholder="جستجو ..." />
+        </div>
+      </div>
+      <div data-role='content'>
+        <div id="map"></div>
+        <div id='details' class='details'>
+          <div class='info'>
+            <h3>پاساژ تک</h3>
+            <p>خیابان ونک  پاساژ تک</p>
+            <a class='phone' data-role='button' data-theme='b' rel='external' href='021220304015'>021-220304015</a>
+            <a class='website' data-role='button' data-theme='a' rel='external' data-href='http://www.google.com'>www.tak-pasaj.com</a>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript" src="cordova-2.7.0.js"></script>
+      <script type="text/javascript" src="assets/js/lawnchair.min.js"></script>
+      <script type="text/javascript" src="assets/js/SQLitePlugin.js"></script>
+      <script type="text/javascript" src="assets/js/Lawnchair-sqlitePlugin.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript">
+        app.initialize();
+      </script>
+    </div>
+  </body>
+</html>

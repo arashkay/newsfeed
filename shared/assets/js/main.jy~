@@ -1,0 +1,28 @@
+var main = {
+  defaults: {
+    youtube: { key: 'AIzaSyAWrtgUdx4SSSbVHrBZ8PL4z620InDMkkI' }
+  },
+  init: function(){
+    main.videos.list();
+    $('.fn-videos').on( 'click', '.fn-video', main.loading.popup);
+  },
+  loading: {
+    popup: function(){
+      $.mobile.loading( 'show', { text: 'loading youtube', textonly: true, textVisible: true } );
+      setTimeout( function(){ $.mobile.loading('hide'); }, 3000);
+    }
+  },
+  videos: {
+    list: function(){
+      var data = { part: 'snippet', q: '#givepeaceadance' };
+      $.get('https://www.googleapis.com/youtube/v3/search', $.extend(data, main.defaults.youtube ), main.videos.success);
+    },
+    success: function(data){
+      $('.template .fn-video').template(data.items, { appendTo: '.fn-videos' } );
+    },
+    link: function(tmp, data){
+      console.log(tmp, data)
+      return tmp.replace('%#url%', data.id.videoId);
+    }
+  }
+};

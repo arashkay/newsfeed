@@ -1,0 +1,26 @@
+var main = {
+  init: function(){
+    $('.fn-posts').on( 'click', '.fn-more', main.posts.more );
+    main.posts.list();
+    main.posts.list();
+  },
+  loading: {
+    popup: function(){
+      $.mobile.loading( 'show' );
+      setTimeout( function(){ $.mobile.loading('hide'); }, 5000);
+    }
+  },
+  posts: {
+    list: function(){
+      var data = [
+        { image: 'http://images.hamshahrionline.ir/images/position36/2013/10/musighe-920709-as.jpg', title: 'ادعاهای نتانیاهو در مجمع عمومی سازمان ملل درباره ایران' }, 
+        { image: 'http://images.hamshahrionline.ir/images/position36/2013/10/obama.jpg', title: 'شهردار تهران در اردوی استقلال حاضر شد/ مدیرعامل سابق پرسپولیس هم به هتل المپیک رفت' },
+        { image: 'http://images.hamshahrionline.ir/images/position36/2013/10/netanyaho.jpg', title: 'خروج از رکود تورمی؛ چگونه؟' } 
+      ];
+      $('.template .fn-post').template( data, { appendTo: '.fn-posts' } );
+    },
+    more: function(){
+      $(this).parents('.fn-post').find('.fn-description').slideDown();
+    }
+  }
+};

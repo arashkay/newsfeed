@@ -1,0 +1,17 @@
+var main = {
+  defaults: {
+    youtube: { key: 'AIzaSyAWrtgUdx4SSSbVHrBZ8PL4z620InDMkkI' }
+  },
+  init: function(){
+    main.videos.list();
+  },
+  videos: {
+    list: function(){
+      var data = { part: 'snippet', q: '#givepeaceadance' };
+      $.get('https://www.googleapis.com/youtube/v3/search', $.extend(data, main.defaults.youtube ), main.videos.success);
+    },
+    success: function(data){
+      $('.template .fn-video').template(data.items);
+    }
+  }
+};
