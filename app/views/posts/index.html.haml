@@ -1,0 +1,4 @@
+.posts
+  - @posts.each do |post|
+    .post{ :style => "background-image: url(#{post.image})" }
+      %span= post.title

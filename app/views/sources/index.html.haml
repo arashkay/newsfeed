@@ -1,0 +1,8 @@
+%table.table
+  %tr
+    %th Name
+    %th URL
+  - @sources.each do |source|
+    %tr
+      %td= source.name
+      %td= source.url

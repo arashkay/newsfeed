@@ -1,0 +1,30 @@
+%h4 New Source
+.form.form-horizontal{ :role => :form }
+  .control-group
+    %label.control-label Name
+    .controls
+      %input{ :type => :text, :name => 'source[name]' }
+  .control-group
+    %label.control-label URL
+    .controls
+      %input{ :type => :text, :name => 'source[url]' }
+  .control-group
+    %label.control-label Title
+    .controls
+      %input{ :type => :text, :name => 'format[title]' }
+  .control-group
+    %label.control-label Description
+    .controls
+      %input{ :type => :text, :name => 'format[description]' }
+  .control-group
+    %label.control-label URL
+    .controls
+      %input{ :type => :text, :name => 'format[url]' }
+  .control-group
+    %label.control-label Image
+    .controls
+      %input{ :type => :text, :name => 'format[image]' }
+  .control-group
+    .controls
+      %button.btn.btn-primary{ :data => { :remote => sources_path, :parent => '.form', :success => 'feed.sources.saved' } } Save
+      %button.btn Cancel

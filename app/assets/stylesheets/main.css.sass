@@ -1,0 +1,51 @@
+@font-face
+  font-family: 'Beiroot'
+  src: url('/assets/fonts/beiroot.eot')
+  src: url('/assets/fonts/beiroot.otf') format('opentype') 
+  src: url('/assets/fonts/beiroot.woff') format('woff'), url('/assets/fonts/beiroot.ttf') format('truetype'), url('/assets/fonts/beiroot.svg') format('svg')
+  font-weight: normal
+  font-style: normal
+
+[class^="icon-"], [class*=" icon-"]
+  background-image: none
+
+body
+  padding-top: 60px
+  background: #111
+  font-family: Beiroot, "Helvetica Neue",Helvetica,Arial,sans-serif
+  color: #eee
+
+.menu
+  margin-bottom: 0
+  position: fixed
+  ul.nav
+    margin-right: 20px !important
+
+.posts
+  width: 99%
+  margin: auto
+  .post
+    box-shadow: 0 0 3px #fff
+    width: 32%
+    height: 150px
+    position: relative
+    float: right
+    margin: 0.5%
+    background-size: cover
+    direction: rtl
+    span
+      background: rgba(0,0,0,.8)
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      color: #fff
+      text-shadow: 1px 1px 1px #000
+      padding: 5px
+      font-size: 16px
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px)
+
+  .posts
+    .post
+      width: 49%

@@ -1,0 +1,37 @@
+!!! 5
+%html
+  %head
+    %title New Feed
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+    =stylesheet_link_tag "all", :media => "all"
+    /[if IE 7]
+      =stylesheet_link_tag "assets/font-awesome/css/font-awesome-ie7.min.css", :media => "all"
+    =javascript_include_tag "all"
+    =yield :head
+    =csrf_meta_tags
+    -if Rails.env == 'production'
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'YOUR_CODE_GOES_HERE']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+  %body
+    .menu.navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          %ul.nav
+            %li.active
+              %a{:href => posts_path } Posts
+            %li
+              %a{:href => sources_path } Sources
+            %li
+              %a{:href => new_source_path } New Source
+            %li
+              %a{:href => fetch_posts_path } Fetch Sources
+    .container
+      =yield
+
