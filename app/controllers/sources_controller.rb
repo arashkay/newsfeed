@@ -1,5 +1,7 @@
 class SourcesController < ApplicationController
-   
+  
+  before_filter :authenticate_admin!
+    
   def index
     @sources = Source.all
   end
@@ -11,7 +13,6 @@ class SourcesController < ApplicationController
   def create
     @source = Source.new params[:source]
     @source.format = params[:format]
-    debugger
     if @source.save
       render :json => @source
     else

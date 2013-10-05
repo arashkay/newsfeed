@@ -1,4 +1,5 @@
 //= require 'jquery.min'
+//= require 'jquery.cookie'
 //= require 'jquery.template.min'
 //= require 'bootstrap.min'
 //= require 'core'

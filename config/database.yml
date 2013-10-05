@@ -33,10 +33,11 @@ test:
 
 production:
   adapter: mysql2
+  host: mysql.talebin.com
   encoding: utf8
   reconnect: false
-  database: newsfeed_production
+  database: cliiz
   pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  username: talebin_admin
+  password: zaz_t_419
+  socket: /var/run/mysqld/mysqld.sock

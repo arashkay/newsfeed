@@ -2,7 +2,9 @@
   %tr
     %th Name
     %th URL
+    %th Params
   - @sources.each do |source|
     %tr
       %td= source.name
       %td= source.url
+      %td= source.format.to_json

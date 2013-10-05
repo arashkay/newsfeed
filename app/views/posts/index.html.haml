@@ -1,4 +1,15 @@
-.posts
+.posts.fn-posts
   - @posts.each do |post|
-    .post{ :style => "background-image: url(#{post.image})" }
-      %span= post.title
+    .post.fn-post{ :data => { :dbid => post.id } }
+      .wrapper
+        .thumb.fn-more{ :style => "background-image: url(#{post.image})" }
+          %span= post.title
+        .fn-description.secret
+          %p= post.summary
+        .actions
+          %i.icon-chevron-sign-down.fn-more
+          %i.icon-chevron-sign-up.fn-more
+          .pull-left
+            %span.likes.fn-likecount= post.likes
+            %i.icon-heart-empty.fn-like{ :data => { :remote => like_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }
+            %i.icon-heart.fn-dislike{ :data => { :remote => dislike_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }

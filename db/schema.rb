@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131002032111) do
+ActiveRecord::Schema.define(:version => 20131005023351) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(:version => 20131002032111) do
     t.text     "summary"
     t.string   "url"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "likes",      :default => 0
   end
 
   create_table "sources", :force => true do |t|

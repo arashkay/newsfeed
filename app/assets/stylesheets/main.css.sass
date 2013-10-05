@@ -9,40 +9,95 @@
 [class^="icon-"], [class*=" icon-"]
   background-image: none
 
+.secret
+  display: none
+
 body
   padding-top: 60px
-  background: #111
+  background: #ddd
   font-family: Beiroot, "Helvetica Neue",Helvetica,Arial,sans-serif
-  color: #eee
+  color: #333
 
 .menu
   margin-bottom: 0
   position: fixed
+  box-shadow: 0 0 3px #000
+  .navbar-inner
+    border: none
   ul.nav
     margin-right: 20px !important
+    text-shadow: none !important
+    > .active
+      a
+        background: #32A3FF
 
 .posts
   width: 99%
   margin: auto
   .post
-    box-shadow: 0 0 3px #fff
     width: 32%
-    height: 150px
     position: relative
     float: right
     margin: 0.5%
-    background-size: cover
     direction: rtl
-    span
-      background: rgba(0,0,0,.8)
-      position: absolute
-      bottom: 0
-      left: 0
-      right: 0
-      color: #fff
-      text-shadow: 1px 1px 1px #000
-      padding: 5px
-      font-size: 16px
+    height: 179px
+    overflow: visible
+    .wrapper
+      box-shadow: 0 0 3px #32A3FF
+    .thumb
+      background-position: center
+      background-size: cover
+      position: relative
+      height: 150px
+      cursor: pointer
+      span
+        background: rgba(0,0,0,.8)
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        color: #fff
+        text-shadow: 1px 1px 1px #000
+        padding: 5px
+        font-size: 16px
+    .fn-description
+      display: none
+      border-bottom: #ddd 1px solid
+      p
+        background: #fff
+        padding: 8px 5px
+        margin: 0
+    .actions
+      background: #fff
+      color: #888
+      height: 22px
+      overflow: hidden
+      padding: 6px 10px 1px 15px
+      font-size: 20px
+      *
+        vertical-align: middle
+      i
+        cursor: pointer
+      .likes
+        font-size: 18px
+      .fn-like
+        color: #777
+      .fn-dislike, .icon-chevron-sign-up
+        display: none
+  .expanded
+    .actions
+      .icon-chevron-sign-up
+        display: inline-block
+      .icon-chevron-sign-down
+        display: none
+  .liked
+    .actions
+      .fn-like
+        display: none
+      .fn-dislike
+        display: inline-block
+        color: #32A3FF
+      
 
 @media screen and (min-device-width: 320px) and (max-device-width: 480px)
 

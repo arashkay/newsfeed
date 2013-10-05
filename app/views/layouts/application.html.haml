@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title New Feed
+    %title=t :posts
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     =stylesheet_link_tag "all", :media => "all"
     /[if IE 7]
@@ -25,13 +25,13 @@
         .container-fluid
           %ul.nav
             %li.active
-              %a{:href => posts_path } Posts
-            %li
-              %a{:href => sources_path } Sources
-            %li
-              %a{:href => new_source_path } New Source
-            %li
-              %a{:href => fetch_posts_path } Fetch Sources
+              %a{:href => posts_path }=t :posts
+            -if session[:admin] || !params[:arash].blank?
+              %li
+                %a{:href => sources_path } Sources
+              %li
+                %a{:href => new_source_path } New Source
+              %li
+                %a{:href => fetch_posts_path } Fetch Sources
     .container
       =yield
-

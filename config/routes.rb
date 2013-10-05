@@ -6,8 +6,14 @@ Newsfeed::Application.routes.draw do
     collection do
       get :fetch
     end
+
+    member do
+      post :like
+      post :dislike
+    end
   end
    
+  match '/:id' => 'posts#last' 
   root :to => 'posts#index'
 
 end
