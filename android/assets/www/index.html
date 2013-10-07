@@ -16,25 +16,28 @@
     <div id='main'>
       <div class='header'>
         <div class='actions'>
-          <i class='icon-th'></i>
-          <i class='bordered'></i>
           <i class='icon-refresh fn-refresh'></i>
+          <i class='icon-th pull-left fn-options'></i>
         </div>
-        <h1>کلاغه</h1>
+      </div>
+      <div class='menu fn-menu'>
+        <a data-href='http://cliiz.com/apps'><i class='icon-android'></i><span>برنامه های دیگر</span></a>
+        <a data-href='http://cliiz.com/team'><i class='icon-beaker'></i><span>درباره تیم ما</span></a>
       </div>
       <div class='content'>
+        <div class='loader fn-loader'></div>
         <div class='template'>
-          <div class='post fn-post' loop='true' >
+          <div class='post fn-post' loop='true' data-dbid='%#id%' fn='main.posts.liked'>
             <div class='thumb fn-more' style='background-image: url(%#image%)'>
               <span class='title'>%#title%</span>
             </div>
             <div class='fn-description'>
-              <p>%#title%</p>
+              <p>%#summary%</p>
             </div>
             <div class='actions'>
               <i class='icon-chevron-sign-down fn-more'></i>
-              <i class='icon-chevron-sign-up fn-more'></i>
               <div class='pull-left'>
+                <span class='counts'>%#likes%</span>
                 <i class='icon-heart-empty fn-like'></i>
                 <i class='icon-heart fn-dislike'></i>
               </div>
