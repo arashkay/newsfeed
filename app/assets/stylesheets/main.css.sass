@@ -82,25 +82,60 @@ body
         font-size: 18px
       .fn-like
         color: #777
-      .fn-dislike, .icon-chevron-sign-up
-        display: none
-  .expanded
-    .actions
-      .icon-chevron-sign-up
-        display: inline-block
-      .icon-chevron-sign-down
-        display: none
-  .liked
-    .actions
-      .fn-like
-        display: none
       .fn-dislike
-        display: inline-block
-        color: #32A3FF
-      
+        display: none
+    .icon-chevron-sign-down
+      position: relative
+      display: inline-block
+    &.liked
+      .actions
+        .fn-like
+          display: none
+        .fn-dislike
+          display: inline-block
+          color: #32A3FF
+    &.expanded .icon-chevron-sign-down
+      -moz-animation: twist 0.5s forwards
+      -webkit-animation: twist 0.5s forwards
+    &.shrinked .icon-chevron-sign-down
+      -moz-animation: twistback 0.5s
+      -webkit-animation: twistback 0.5s
 
-@media screen and (min-device-width: 320px) and (max-device-width: 480px)
+@-moz-keyframes twist
+  0% 
+    -moz-transform: rotate(0deg)
+  100% 
+    -moz-transform: rotate(180deg)
+@-webkit-keyframes twist
+  0% 
+    -webkit-transform: rotate(0deg)
+  100% 
+    -webkit-transform: rotate(180deg)
+
+@-moz-keyframes twistback
+  0% 
+    -moz-transform: rotate(180deg)
+  100% 
+    -moz-transform: rotate(360deg)
+@-webkit-keyframes twistback
+  0% 
+    -webkit-transform: rotate(180deg)
+  100% 
+    -webkit-transform: rotate(360deg)
+      
+@media screen and (min-device-width: 480px) and (max-device-width: 680px)
 
   .posts
     .post
       width: 49%
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px)
+
+  .posts
+    width: 100%
+    .post
+      box-shadow: 0 0 3px #32A3FF
+      height: auto
+      overflow: auto
+      width: 99%
+      margin: 0.5%

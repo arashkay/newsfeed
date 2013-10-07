@@ -40,12 +40,12 @@ $.extend(feed, {
       var post = $(this).parents('.fn-post');
       if(post.is('.expanded')){
         post.find('.fn-description').slideUp();
-        post.removeClass('expanded');
+        post.removeClass('expanded').addClass('shrinked');
       }else{
         $('.fn-post.expanded').removeClass('expanded').find('.fn-description').slideUp();
         post.css( 'zIndex', feed.storage.index++ );
         post.find('.fn-description').slideDown();
-        post.addClass('expanded');
+        post.addClass('expanded').removeClass('shrinked');
       }
     },
     liked: function(data){

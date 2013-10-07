@@ -5,6 +5,7 @@ Newsfeed::Application.routes.draw do
   resources :posts, :only => :index do
     collection do
       get :fetch
+      post :likes
     end
 
     member do

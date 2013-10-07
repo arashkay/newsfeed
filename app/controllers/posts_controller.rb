@@ -12,6 +12,11 @@ class PostsController < ApplicationController
     respond_with @posts
   end
 
+  def likes
+    @posts = Post.where( :id => params[:ids] ).select([:id, :likes]).all
+    render :json => @posts
+  end
+
   def like
     @post = Post.find params[:id]
     @post.increment! :likes

@@ -8,7 +8,6 @@
           %p= post.summary
         .actions
           %i.icon-chevron-sign-down.fn-more
-          %i.icon-chevron-sign-up.fn-more
           .pull-left
             %span.likes.fn-likecount= post.likes
             %i.icon-heart-empty.fn-like{ :data => { :remote => like_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }
