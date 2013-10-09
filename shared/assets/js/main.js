@@ -132,6 +132,7 @@ var main = {
       for(i=0;i<size;i++){
         var v = arg[i+1];
         v = ((typeof v == 'string')? v.replace(/\"/g,"'") : v);
+        if(v==null) v = '';
         q = q.replace('?', v );
       }
       return q;
@@ -159,7 +160,7 @@ var main = {
     },
     load: function(callback){
       main.database.db.transaction( function(tx){
-        tx.executeSql( 'SELECT * FROM posts', [],
+        tx.executeSql( 'SELECT * FROM posts ORDER BY id DESC', [],
         function(tx, re){
           var size = re.rows.length;
           var list = [];
