@@ -4,7 +4,10 @@
     %th URL
     %th Params
   - @sources.each do |source|
-    %tr
+    %tr.fn-source
       %td= source.name
       %td= source.url
       %td= source.format.to_json
+      %td
+        %a.btn{ :href => edit_source_path(source) } Change
+        %a.btn.btn-warning{ :data => { :remote => source_path(source), :success => 'feed.sources.deleted' , :method => 'DELETE' } } Destory

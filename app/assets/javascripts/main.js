@@ -25,6 +25,9 @@ $.extend(feed, {
     saved: function(data){
       if(data.id)
         location.href= '/sources';
+    },
+    deleted: function(data){
+      $(this).parents('.fn-source').fadeOut();
     }
   },
   posts: {

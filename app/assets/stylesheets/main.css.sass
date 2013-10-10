@@ -12,6 +12,10 @@
 .secret
   display: none
 
+.ltr
+  direction: ltr
+  text-align: left
+
 body
   padding-top: 60px
   background: #ddd
@@ -40,7 +44,7 @@ body
     float: right
     margin: 0.5%
     direction: rtl
-    height: 179px
+    height: 189px
     overflow: visible
     .wrapper
       box-shadow: 0 0 3px #32A3FF
@@ -48,8 +52,25 @@ body
       background-position: center
       background-size: cover
       position: relative
-      height: 150px
+      height: 160px
       cursor: pointer
+      b
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        padding: 3px 5px
+        color: #fff
+        text-shadow: -1px 1px 1px #111
+        background: rgba(0,0,0,0.6)
+      .glass
+        background: url(/assets/glass.png) right top no-repeat
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        position: absolute
+        z-index: 300
       span
         background: rgba(0,0,0,.8)
         position: absolute
@@ -63,6 +84,16 @@ body
     .fn-description
       display: none
       border-bottom: #ddd 1px solid
+      .url
+        display: block
+        font-family: tahoma
+        background: #32A3FF
+        font-size: 12px
+        padding: 3px
+        text-align: left
+        direction: ltr
+        a
+          color: #fff
       p
         background: #fff
         padding: 8px 5px
@@ -84,6 +115,10 @@ body
         color: #777
       .fn-dislike
         display: none
+      a
+        text-decoration: none
+        margin-left: 5px
+        color: #777
     .icon-chevron-sign-down
       position: relative
       display: inline-block
@@ -123,13 +158,13 @@ body
   100% 
     -webkit-transform: rotate(360deg)
       
-@media screen and (min-device-width: 480px) and (max-device-width: 680px)
+@media screen and (min-device-width: 600px) and (max-device-width: 1024px)
 
   .posts
     .post
       width: 49%
 
-@media screen and (min-device-width: 320px) and (max-device-width: 480px)
+@media screen and (min-device-width: 320px) and (max-device-width: 600px)
 
   .posts
     width: 100%

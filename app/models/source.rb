@@ -11,13 +11,14 @@ class Source < ActiveRecord::Base
     Source.all.each do |source|
       xml = Nokogiri::XML(open(source.url).read)
       xml.xpath("//item").each do |i|
-        title = i.xpath(source.format['title']).text
+        title = source.format["title"].blank? ? nil : i.xpath(source.format['title']).text 
+        next if title.blank?
         oldpost = Post.find_by_title title
         next unless oldpost.blank?
         post = Post.new
         post.title = title
         post.source_id = source.id
-        post.summary = i.xpath(source.format["description"]).text
+        post.summary = i.xpath(source.format["description"]).text unless source.format["description"].blank? 
         post.url = i.xpath(source.format["url"]).text
         page = Nokogiri::HTML(open(post.url).read)
         image = page.css(source.format["image"])

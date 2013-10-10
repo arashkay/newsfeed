@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   LATEST_LIMIT = 50
   
   attr_accessible :image, :source_id, :summary, :title, :url
+  belongs_to :source
 
   default_scope order('created_at DESC')
   scope :recent, limit(Post::LIST_LIMIT)

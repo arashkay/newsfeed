@@ -3,28 +3,33 @@
   .control-group
     %label.control-label Name
     .controls
-      %input{ :type => :text, :name => 'source[name]' }
+      %input{ :type => :text, :name => 'source[name]', :value => @source.name }
   .control-group
     %label.control-label URL
     .controls
-      %input{ :type => :text, :name => 'source[url]' }
+      %input.ltr{ :type => :text, :name => 'source[url]', :value => @source.url }
   .control-group
     %label.control-label Title
     .controls
-      %input{ :type => :text, :name => 'format[title]' }
+      %input.ltr{ :type => :text, :name => 'format[title]', :value => @source.format['title'] }
   .control-group
-    %label.control-label Description
+    %label.control-label Summary
     .controls
-      %input{ :type => :text, :name => 'format[description]' }
+      %input.ltr{ :type => :text, :name => 'format[description]', :value => @source.format['description'] }
   .control-group
     %label.control-label URL
     .controls
-      %input{ :type => :text, :name => 'format[url]' }
+      %input.ltr{ :type => :text, :name => 'format[url]', :value => @source.format['url'] }
+  %h4 Page Digs
   .control-group
-    %label.control-label Image
+    %label.control-label Page Image
     .controls
-      %input{ :type => :text, :name => 'format[image]' }
+      %input.ltr{ :type => :text, :name => 'format[image]', :value => @source.format['image'] }
+  .control-group
+    %label.control-label Page Summary
+    .controls
+      %input.ltr{ :type => :text, :name => 'format[summary]', :value => @source.format['summary'] }
   .control-group
     .controls
-      %button.btn.btn-primary{ :data => { :remote => sources_path, :parent => '.form', :success => 'feed.sources.saved' } } Save
+      %button.btn.btn-primary{ :data => { :remote => (@source.new_record? ? sources_path : source_path(@source) ), :method => (@source.new_record? ? 'POST' : 'PUT'), :parent => '.form', :success => 'feed.sources.saved' } } Save
       %button.btn Cancel
