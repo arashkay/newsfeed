@@ -6,6 +6,12 @@ class Source < ActiveRecord::Base
   serialize :format
 
   validates :name, :url, :presence => true
+
+  after_initialize :set_format
+
+  def set_format
+    self.format = { :title => '', :description => '', :url => '', :image => '', :summary => '' }
+  end
   
   def self.fetch
     Source.all.each do |source|
