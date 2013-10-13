@@ -1,7 +1,8 @@
 set :application, "kalagheh"
-set :deploy_to,  "/home/arashvps/kalagheh.com"
+set :deploy_to,  "/var/www/kalagheh.com"
 server "106.186.120.146", :web, :app, :db, :primary => true
 set :user, "webmaster"
+#set :deploy_to,  "/home/arashvps/kalagheh.com"
 #server "ps49055.dreamhost.com", :web, :app, :db, :primary => true
 #set :user, "arashvps"
 set :use_sudo, false

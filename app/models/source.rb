@@ -20,6 +20,7 @@ class Source < ActiveRecord::Base
       xml = Nokogiri::XML(open(URI.parse source.url).read)
       xml.xpath("//item").each do |i|
         title = source.format["title"].blank? ? nil : i.xpath(source.format['title']).text 
+        puts title
         next if title.blank?
         oldpost = Post.find_by_title title
         next unless oldpost.blank?
