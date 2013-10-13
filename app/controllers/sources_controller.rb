@@ -7,7 +7,7 @@ class SourcesController < ApplicationController
   end
 
   def new
-    @source = Source.new
+    @source = Source.new_with_format
   end
 
   def create

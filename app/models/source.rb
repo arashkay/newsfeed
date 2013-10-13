@@ -7,15 +7,17 @@ class Source < ActiveRecord::Base
 
   validates :name, :url, :presence => true
 
-  after_initialize :set_format
-
-  def set_format
-    self.format = { :title => '', :description => '', :url => '', :image => '', :summary => '' }
+  def self.new_with_format
+    object = self.new
+    object.format = { :title => '', :description => '', :url => '', :image => '', :summary => '' }
+    object
   end
   
   def self.fetch
     Source.all.each do |source|
-      xml = Nokogiri::XML(open(source.url).read)
+      puts source.name
+      puts source.url
+      xml = Nokogiri::XML(open(URI.parse source.url).read)
       xml.xpath("//item").each do |i|
         title = source.format["title"].blank? ? nil : i.xpath(source.format['title']).text 
         next if title.blank?
@@ -25,8 +27,9 @@ class Source < ActiveRecord::Base
         post.title = title
         post.source_id = source.id
         post.summary = i.xpath(source.format["description"]).text unless source.format["description"].blank? 
-        post.url = i.xpath(source.format["url"]).text
-        page = Nokogiri::HTML(open(post.url).read)
+        post.url = i.xpath(source.format["url"]).text.strip
+        puts post.url
+        page = Nokogiri::HTML(open(URI.parse post.url).read)
         image = page.css(source.format["image"])
         unless image.blank?
           post.image = image[0].attr('src')
