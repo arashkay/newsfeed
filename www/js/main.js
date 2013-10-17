@@ -13,6 +13,9 @@ $.extend( main,{
     $('[data-href]').click( function(){
       window.open($(this).data('href'), '_system');
     });
+    $('.fn-posts').on( 'click','[data-href]', function(){
+      window.open($(this).data('href'), '_system');
+    });
     if(!main.defaults.debug)
       main.database.init();
   },
