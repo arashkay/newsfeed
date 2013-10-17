@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.swipe.min.js"></script>
+    <script type="text/javascript" src="js/jquery.template.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <title>کلاغه</title>
+  </head>
+  <body>
+    <div id='main'>
+      <div class='pages''>
+        <div class='page fn-about fn-page'>
+          <div class='page-header'>
+            <i class='icon-remove-sign fn-close'></i>
+          </div>
+          <div class='page-content'>
+            <h2>تیم ما</h2>
+            <p>تیم همراه سازان ، تیم تخصصی توسعه  و ساخت برنامه های تلفن هوشمند و وب.</p>
+            <h3>تماس با ما </h3>
+            <p><a data-href='http://www.kalagheh.com/app'>www.kalagheh.com</a></p>
+          </div>
+        </div>
+      </div>
+      <div class='header'>
+        <div class='actions'>
+          <i class='icon-refresh fn-refresh'></i>
+          <i class='icon-th pull-left fn-options'></i>
+        </div>
+      </div>
+      <div class='menu fn-menu'>
+        <a data-href='http://kalagheh.com/apps'><i class='icon-android'></i><span>برنامه های دیگر</span></a>
+        <a class='fn-about-btn'><i class='icon-beaker'></i><span>درباره تیم ما</span></a>
+      </div>
+      <div class='content'>
+        <div class='loader fn-loader'></div>
+        <div class='template'>
+          <div class='post fn-post' loop='true' data-dbid='%#id%' fn='main.posts.liked'>
+            <div class='thumb fn-more' style='background-image: url(%#image%)'>
+              <span class='title'>%#title%</span>
+            </div>
+            <div class='fn-description'>
+              <p>%#summary%</p>
+            </div>
+            <div class='actions'>
+              <i class='icon-external-link' data-href='%#url%'></i>
+              <i class='icon-chevron-sign-down fn-more'></i>
+              <div class='pull-left'>
+                <span class='counts'>%#likes%</span>
+                <i class='icon-heart-empty fn-like'></i>
+                <i class='icon-heart fn-dislike'></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='posts fn-posts'></div>
+      </div>
+    </div>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+      app.initialize();
+    </script>
+  </body>
+</html>
