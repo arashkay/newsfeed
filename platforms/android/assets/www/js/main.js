@@ -10,11 +10,15 @@ $.extend( main,{
     $('.fn-refresh').click(main.posts.refresh);
     $('.fn-about-btn').click(main.page.about);
     $('.fn-close').click(main.page.close);
-    $('[data-href]').click( function(){
-      window.open($(this).data('href'), '_system');
-    });
+    $('[data-href]').click( main.open );
+    $('.fn-posts').on( 'click','[data-href]', main.open );
     if(!main.defaults.debug)
       main.database.init();
+  },
+  open: function(){
+    $('.fn-blocker').fadeIn().delay(4000).fadeOut();
+    var url = $(this).data('href');
+    setTimeout( function(){window.open(url, '_system');}, 600);
   },
   loading: {
     popup: function(){
