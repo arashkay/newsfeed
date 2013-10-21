@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def last
     @posts = Post.latest(params[:id]).all
-    respond_with @posts
+    render :json => @posts
   end
 
   def likes
