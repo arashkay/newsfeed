@@ -22,18 +22,31 @@ body
   font-family: Beiroot, "Helvetica Neue",Helvetica,Arial,sans-serif
   color: #333
 
+body.no-header
+  padding-top: 0px
+
 .menu
   margin-bottom: 0
   position: fixed
   box-shadow: 0 0 3px #000
+  .logo
+    background: url(/assets/logo.png) no-repeat center
+    width: 55px
+    height: 55px
+    position: fixed
+    left: 10px
+    top: 3px
+    z-index: 500
   .navbar-inner
     border: none
   ul.nav
     margin-right: 20px !important
     text-shadow: none !important
     > .active
-      a
+      a, a:hover
         background: #32A3FF
+        text-shadow: none
+        color: #fff
 
 .posts
   width: 99%
@@ -158,13 +171,36 @@ body
   100% 
     -webkit-transform: rotate(360deg)
       
-@media screen and (min-device-width: 600px) and (max-device-width: 1024px)
+.app
+  display: block
+  background: #fff
+  border-radius: 10px
+  padding: 10px
+  margin: 10px auto
+  text-align: center
+  box-shadow: 0 0 5px #32A3FF
+  &:hover
+    text-decoration: none
+  .icon
+    width: 80px
+    height: 80px
+    background: #fff no-repeat center
+    display: inline-block
+    &.kalagheh
+      background-image: url(/assets/logo.png)
+  .name
+    display: block
+    color: #0088CC
+  p
+    color: #666
+
+@media screen and (min-width: 600px) and (max-width: 978px)
 
   .posts
     .post
       width: 49%
 
-@media screen and (min-device-width: 320px) and (max-device-width: 600px)
+@media screen and (min-width: 320px) and (max-width: 600px)
 
   .posts
     width: 100%

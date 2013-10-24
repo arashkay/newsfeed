@@ -15,6 +15,7 @@ Newsfeed::Application.routes.draw do
     end
   end
    
+  match '/apps' => 'general#apps' 
   match '/:id' => 'posts#last' 
   root :to => 'posts#index'
 

@@ -1,0 +1,24 @@
+!!! 5
+%html
+  %head
+    %title=t :posts
+    =render '/layouts/header'
+    =csrf_meta_tags
+    -if Rails.env == 'production'
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'YOUR_CODE_GOES_HERE']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+  %body.no-header
+    .container
+      %h2 نرم افزارهای ما در بازار
+      %a.app
+        %i.kalagheh.icon
+        %span.name خبر خوان کلاغه
+        %p با کلاغه (Kalagheh) اخبار لحظه ای ایران را در جیب خود داشته باشید. این برنامه اخبار روز ایران را بصورت جذاب تری به همراه  تصویر از خبرگذاری های معتبر ایرانی در اختیار شما میگذارد. همچنین اگر به اینترنت دسترسی نداشته باشید می توانید اخبار را بدون تصویر در حالت آف لاین ملاحظه کنید.
+        %span نصب برنامه
