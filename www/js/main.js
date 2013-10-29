@@ -163,10 +163,8 @@ $.extend( main,{
         $.each( list, function(i,v){
           tx.executeSql( main.database.query(['INSERT INTO posts (id, title, summary, url, image, likes) VALUES (?+?,"?+?","?+?","?+?","?+?",?+?)', v.id, v.title, v.summary, v.url, v.image, v.likes]));
         });
-      }, main.database.error, function(){
-        if(list.length>0){
-          main.cache.max(list[0].id);
-        }
+      }, function(){ main.cache.findMax(list) }, function(){
+        main.cache.findMax(list);
       });
     },
     like: function(id, like){
@@ -218,6 +216,14 @@ $.extend( main,{
         main.cache.storage.setItem('max', id);
       if(main.cache.storage.getItem('max')==null) return 0;
       return main.cache.storage.getItem('max');
+    },
+    findMax: function(list){
+      if(list.length>0){
+        $.each(list, function(k,i){
+          if(i.id>main.cache.max())
+            main.cache.max(i.id);
+        });
+      }
     }
   },
   drag: {

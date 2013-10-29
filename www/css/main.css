@@ -24,6 +24,7 @@ body {
 body, #main{
   background: #ddd;
 }
+
 .main-loader{
   display: none;
   z-index: 10002;
