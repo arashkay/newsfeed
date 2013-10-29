@@ -5,6 +5,14 @@
     .controls
       %input{ :type => :text, :name => 'source[name]', :value => @source.name }
   .control-group
+    %label.control-label Tag
+    .controls
+      = select :source, :tag_id, @tags.map{ |i| [i.name, i.id] }, :include_blank => true, :selected => @source.tag_id
+  .control-group
+    %label.control-label Category
+    .controls
+      = select :source, :category_id, @tags.map{ |i| [i.name, i.id] }, :include_blank => true, :selected => @source.category_id
+  .control-group
     %label.control-label URL
     .controls
       %input.ltr{ :type => :text, :name => 'source[url]', :value => @source.url }

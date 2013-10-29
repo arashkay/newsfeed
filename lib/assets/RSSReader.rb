@@ -23,6 +23,8 @@ class RSSReader
       end
       item.body = page.css(format["summary"]).text.truncate(700) unless format["summary"].blank? 
       item.save
+      PostTag.find_or_create_by_tag_id_and_post_id( { :tag_id => source.tag_id, :post_id => item.id } ) if source.tag_id
+      PostTag.find_or_create_by_tag_id_and_post_id( { :tag_id => source.category_id, :post_id => item.id } ) if source.category_id
       item.auto_tag
     end
   end

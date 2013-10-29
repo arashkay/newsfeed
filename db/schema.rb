@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029024458) do
+ActiveRecord::Schema.define(:version => 20131029055400) do
 
   create_table "post_tags", :force => true do |t|
     t.integer  "post_id",    :null => false
@@ -40,10 +40,14 @@ ActiveRecord::Schema.define(:version => 20131029024458) do
   create_table "sources", :force => true do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.text     "format"
+    t.integer  "tag_id"
+    t.integer  "category_id"
   end
+
+  add_index "sources", ["tag_id"], :name => "sources_tag_id_fk"
 
   create_table "tags", :force => true do |t|
     t.string   "name"
@@ -55,5 +59,7 @@ ActiveRecord::Schema.define(:version => 20131029024458) do
   add_foreign_key "post_tags", "tags", :name => "post_tags_tag_id_fk"
 
   add_foreign_key "posts", "sources", :name => "posts_source_id_fk"
+
+  add_foreign_key "sources", "tags", :name => "sources_tag_id_fk"
 
 end

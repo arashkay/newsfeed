@@ -9,6 +9,9 @@
 [class^="icon-"], [class*=" icon-"]
   background-image: none
 
+.normal-font
+  font-family: tahoma
+
 .secret
   display: none
 
@@ -67,15 +70,21 @@ body.no-header
       position: relative
       height: 160px
       cursor: pointer
-      b
+      .info
         position: absolute
         top: 0
         left: 0
         right: 0
         padding: 3px 5px
         color: #fff
-        text-shadow: -1px 1px 1px #111
         background: rgba(0,0,0,0.6)
+        b
+          text-shadow: -1px 1px 1px #111
+        .tags
+          .tag
+            display: inline-block
+            background: #31A1FC
+            padding: 1px 3px
       .glass
         background: url(/assets/glass.png) right top no-repeat
         top: 0

@@ -8,6 +8,7 @@ class SourcesController < ApplicationController
 
   def new
     @source = Source.new_with_format
+    @tags = Tag.all
   end
 
   def create
@@ -22,6 +23,7 @@ class SourcesController < ApplicationController
 
   def edit
     @source = Source.find params[:id]
+    @tags = Tag.all
     render :new
   end
 

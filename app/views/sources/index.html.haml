@@ -2,12 +2,15 @@
   %tr
     %th Name
     %th URL
-    %th Params
+    %th Tag
+    %th Category
+    %th Actions
   - @sources.each do |source|
     %tr.fn-source
       %td= source.name
       %td= source.url
-      %td= source.format.to_json
+      %td= source.tag.name unless source.tag.blank?
+      %td= source.category.name unless source.category.blank?
       %td
         %a.btn{ :href => edit_source_path(source) } Change
         %a.btn.btn-warning{ :data => { :remote => source_path(source), :success => 'feed.sources.deleted' , :method => 'DELETE' } } Destory

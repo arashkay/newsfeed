@@ -3,7 +3,11 @@
     .post.fn-post{ :data => { :dbid => post.id } }
       .wrapper
         .thumb.fn-more{ :style => "background-image: url(#{post.image})" }
-          %b= post.source.name
+          .info
+            %b= post.source.name
+            .tags
+              -post.tags.each do |tag|
+                .tag= tag.name
           %span.fn-taggable= post.title
         .fn-description.fn-taggable.secret
           .url

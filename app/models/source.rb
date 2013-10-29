@@ -1,6 +1,8 @@
 class Source < ActiveRecord::Base
   
-  attr_accessible :name, :url, :format
+  attr_accessible :name, :url, :format, :tag_id, :category_id
+  belongs_to :tag
+  belongs_to :category, :class_name => 'Tag'
   serialize :format
 
   validates :name, :url, :presence => true
