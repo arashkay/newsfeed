@@ -1,5 +1,6 @@
 //= require 'jquery.min'
 //= require 'jquery.cookie'
+//= require 'jquery.highlight.min'
 //= require 'jquery.template.min'
 //= require 'bootstrap.min'
 //= require 'core'

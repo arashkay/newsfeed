@@ -10,7 +10,9 @@ $.extend(feed, {
   init: function(){
     $.cookie.json = true;
     feed.liking();
-    $('.fn-posts').on( 'click', '.fn-more, .fn-like, .fn-dislike', feed.posts.actions );
+    $('.fn-posts').on( 'click', '.fn-more, .fn-read, .fn-like, .fn-dislike, .fn-tagit, .fn-add-tag, .fn-cancel-tag', feed.posts.actions );
+    $('.fn-taggable').mouseup( feed.tags.tag );
+    if($('.fn-tagging').size()>0) feed.tags.highlight();
   },
   liking: function(){
     var likes = $.cookie('likes');
@@ -30,6 +32,42 @@ $.extend(feed, {
       $(this).parents('.fn-source').fadeOut();
     }
   },
+  tags: {
+    find: function(){
+      var text = "";
+      if (window.getSelection) {
+        text = window.getSelection().toString();
+      } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+      }
+      return text;
+    },
+    tag: function(){
+      var tag = $.trim(feed.tags.find());
+      var post = $(this).parents('.fn-post');
+      $('.fn-taggable', post).popover('destroy');
+      $(this).popover( { html: true, content: '<input name="tag" type="text" value="'+tag+'"><a class="btn btn-success icon-plus fn-add-tag"></a><a class="btn btn-danger icon-remove fn-cancel-tag"></a>', placement: 'top' } );
+    },
+    cancel: function(){
+      var post = $(this).parents('.fn-post');
+      $('.fn-taggable', post).popover('destroy');
+    },
+    save: function(){
+      var post = $(this).parents('.fn-post');
+      var tag = $('[name=tag]', post).val();
+      $.post( '/tags', { tag: { name: tag } }, feed.tags.saved );
+      $('.fn-taggable', post).popover('destroy');
+    },
+    highlight: function(){
+      $.get( '/tags.json', feed.tags.colorise );
+    },
+    colorise: function(tags){
+      var posts = $('.fn-taggable');
+      $.each( tags, function(){
+        posts.highlight(this.name);
+      });
+    }
+  },
   posts: {
     actions: function(){
       if($(this).is('.fn-more'))
@@ -38,6 +76,21 @@ $.extend(feed, {
         feed.posts.like.call(this);
       if($(this).is('.fn-dislike'))
         feed.posts.dislike.call(this);
+      if($(this).is('.fn-read'))
+        feed.posts.read.call(this);
+      if($(this).is('.fn-tagit'))
+        feed.tags.save.call(this);
+      if($(this).is('.fn-cancel-tag'))
+        feed.tags.cancel.call(this);
+      if($(this).is('.fn-add-tag'))
+        feed.tags.save.call(this);
+    },
+    read: function(){
+      var post = $(this).parents('.fn-post');
+      $('.fn-news-title').text($('.fn-title', post).text());
+      $('.fn-news-url').attr( 'href', $('.fn-url', post).attr('href') );
+      $('.fn-news-body').text($('.fn-body', post).text());
+      $('#postbody').modal('show');
     },
     more: function(){
       var post = $(this).parents('.fn-post');

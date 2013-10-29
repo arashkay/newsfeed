@@ -36,8 +36,8 @@ class SourcesController < ApplicationController
   end
 
   def destroy
-    @source = Source.find params[:id]
-    render :json => @source.destroy
+    #@source = Source.find params[:id]
+    #render :json => @source.destroy
   end
 
 end

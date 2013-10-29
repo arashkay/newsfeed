@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131005023351) do
+ActiveRecord::Schema.define(:version => 20131029024458) do
+
+  create_table "post_tags", :force => true do |t|
+    t.integer  "post_id",    :null => false
+    t.integer  "tag_id",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "post_tags", ["post_id"], :name => "post_tags_post_id_fk"
+  add_index "post_tags", ["tag_id"], :name => "post_tags_tag_id_fk"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -22,7 +32,10 @@ ActiveRecord::Schema.define(:version => 20131005023351) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "likes",      :default => 0
+    t.text     "body"
   end
+
+  add_index "posts", ["source_id"], :name => "posts_source_id_fk"
 
   create_table "sources", :force => true do |t|
     t.string   "name"
@@ -31,5 +44,16 @@ ActiveRecord::Schema.define(:version => 20131005023351) do
     t.datetime "updated_at", :null => false
     t.text     "format"
   end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_foreign_key "post_tags", "posts", :name => "post_tags_post_id_fk"
+  add_foreign_key "post_tags", "tags", :name => "post_tags_tag_id_fk"
+
+  add_foreign_key "posts", "sources", :name => "posts_source_id_fk"
 
 end

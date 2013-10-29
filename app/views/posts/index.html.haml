@@ -3,13 +3,27 @@
     .post.fn-post{ :data => { :dbid => post.id } }
       .wrapper
         .thumb.fn-more{ :style => "background-image: url(#{post.image})" }
-          %span= post.title
+          %span.fn-title= post.title
         .fn-description.secret
           %p= post.summary
+        .fn-body.secret= post.body
         .actions
           %i.icon-chevron-sign-down.fn-more
           .pull-left
-            %a.icon-external-link{ :href => post.url, :target => '_blank' }
+            %a.icon-external-link.fn-url{ :href => post.url, :target => '_blank' }
+            %a.icon-align-justify.fn-read
             %span.likes.fn-likecount= post.likes
             %i.icon-heart-empty.fn-like{ :data => { :remote => like_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }
             %i.icon-heart.fn-dislike{ :data => { :remote => dislike_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }
+#postbody.modal.fade{ :tabindex => -1 }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %i.icon-remove-sign.close{ :data => { :dismiss => "modal" } }
+        %h4.modal-title.fn-news-title 
+      .modal-body.fn-news-body
+      .modal-footer
+        %a.btn.btn-success{ :href => '#', :data => { :dismiss => :modal } } بستن
+        %a.btn.fn-news-url{ :target => '_blank' }
+          %i.icon-external-link
+          %span کامل بخوانید

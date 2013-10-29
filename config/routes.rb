@@ -14,6 +14,8 @@ Newsfeed::Application.routes.draw do
       post :dislike
     end
   end
+
+  resources :tags, :only => [:create, :index]
    
   match '/apps' => 'general#apps' 
   match '/:id' => 'posts#last' 

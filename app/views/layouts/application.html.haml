@@ -5,16 +5,6 @@
     =render '/layouts/header'
     =yield :head
     =csrf_meta_tags
-    -if Rails.env == 'production'
-      :javascript
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'YOUR_CODE_GOES_HERE']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
   %body
     .menu.navbar.navbar-fixed-top
       %a.logo{ :href => root_path }
@@ -23,14 +13,18 @@
           %ul.nav
             %li.active
               %a{:href => posts_path }=t :posts
+            %li
+              %a{ :href => 'http://cafebazaar.ir/app/com.tectual.kalagheh/?l=fa', :target => '_blank' } دریافت اخبار در موبایلتان
             -if session[:admin] || !params[:arash].blank?
               %li
                 %a{:href => sources_path } Sources
               %li
                 %a{:href => new_source_path } New Source
               %li
-                %a{:href => fetch_posts_path } Fetch Sources
+                %a{:href => list_posts_path } Tag Posts
               %li
-                %a{:href => list_posts_path } Fetched List
+                %a{:href => tags_path } Tags
+              %li
+                %a{:href => fetch_posts_path } Fetch Sources
     .container
       =yield

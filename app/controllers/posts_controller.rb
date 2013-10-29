@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def list
-    @posts = Post.recent.all
+    @posts = Post.where [ 'created_at > ?', Time.now-2.days ] 
     respond_with @posts
   end
 

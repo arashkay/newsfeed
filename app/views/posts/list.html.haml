@@ -1,11 +1,11 @@
-.posts.fn-posts
+.posts.fn-posts.fn-tagging
   - @posts.each do |post|
     .post.fn-post{ :data => { :dbid => post.id } }
       .wrapper
         .thumb.fn-more{ :style => "background-image: url(#{post.image})" }
           %b= post.source.name
-          %span= post.title
-        .fn-description.secret
+          %span.fn-taggable= post.title
+        .fn-description.fn-taggable.secret
           .url
             %a{ :href => post.url, :target => '_blank' }= post.url
           %p= post.summary
@@ -15,4 +15,3 @@
             %span.likes.fn-likecount= post.likes
             %i.icon-heart-empty.fn-like{ :data => { :remote => like_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }
             %i.icon-heart.fn-dislike{ :data => { :remote => dislike_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }
-
