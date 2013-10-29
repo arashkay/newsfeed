@@ -1,3 +1,5 @@
 %ul
   - @tags.each do |tag|
-    %li=tag.name
+    %li
+      =tag.name
+      %a{ :href => edit_tag_path(tag) } تغییر

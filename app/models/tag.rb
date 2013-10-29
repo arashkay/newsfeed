@@ -3,6 +3,7 @@ class Tag < ActiveRecord::Base
   attr_accessible :name
 
   validates :name, :uniqueness => true
+  default_scope order('name ASC')
 
   def name=(value)
     write_attribute :name, value.strip

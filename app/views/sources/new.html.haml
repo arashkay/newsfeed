@@ -1,15 +1,15 @@
-%h4 New Source
+%h4 منبع خبری
 .form.form-horizontal{ :role => :form }
   .control-group
-    %label.control-label Name
+    %label.control-label نام
     .controls
       %input{ :type => :text, :name => 'source[name]', :value => @source.name }
   .control-group
-    %label.control-label Tag
+    %label.control-label تگ
     .controls
       = select :source, :tag_id, @tags.map{ |i| [i.name, i.id] }, :include_blank => true, :selected => @source.tag_id
   .control-group
-    %label.control-label Category
+    %label.control-label تگ گروه
     .controls
       = select :source, :category_id, @tags.map{ |i| [i.name, i.id] }, :include_blank => true, :selected => @source.category_id
   .control-group
@@ -17,18 +17,18 @@
     .controls
       %input.ltr{ :type => :text, :name => 'source[url]', :value => @source.url }
   .control-group
-    %label.control-label Title
+    %label.control-label Title Tag
     .controls
       %input.ltr{ :type => :text, :name => 'format[title]', :value => @source.format['title'] }
   .control-group
-    %label.control-label Summary
+    %label.control-label Summary Tag
     .controls
       %input.ltr{ :type => :text, :name => 'format[description]', :value => @source.format['description'] }
   .control-group
-    %label.control-label URL
+    %label.control-label URL Tag
     .controls
       %input.ltr{ :type => :text, :name => 'format[url]', :value => @source.format['url'] }
-  %h4 Page Digs
+  %h4 Page CSS Selectors
   .control-group
     %label.control-label Page Image
     .controls
@@ -39,5 +39,5 @@
       %input.ltr{ :type => :text, :name => 'format[summary]', :value => @source.format['summary'] }
   .control-group
     .controls
-      %button.btn.btn-primary{ :data => { :remote => (@source.new_record? ? sources_path : source_path(@source) ), :method => (@source.new_record? ? 'POST' : 'PUT'), :parent => '.form', :success => 'feed.sources.saved' } } Save
-      %button.btn Cancel
+      %button.btn.btn-primary{ :data => { :remote => (@source.new_record? ? sources_path : source_path(@source) ), :method => (@source.new_record? ? 'POST' : 'PUT'), :parent => '.form', :success => 'feed.sources.saved' } } ثبت
+      %a.btn{ :href => sources_path } برگشت

@@ -1,0 +1,10 @@
+%h4 تگ
+= form_for @tag, :html => { :class => 'form form-horizontal' } do |form|
+  .control-group
+    %label.control-label تگ
+    .controls
+      %input{ :type => :text, :name => 'tag[name]', :value => @tag.name }
+  .control-group
+    .controls
+      %button.btn.btn-primary ثبت
+      %a.btn{ :href => sources_path } برگشت

@@ -15,7 +15,7 @@ Newsfeed::Application.routes.draw do
     end
   end
 
-  resources :tags, :only => [:create, :index]
+  resources :tags, :only => [:create, :index, :edit, :update]
    
   match '/apps' => 'general#apps' 
   match '/:id' => 'posts#last' 
