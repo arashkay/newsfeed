@@ -6,7 +6,7 @@
     %th Category
     %th Actions
   - @sources.each do |source|
-    %tr.fn-source
+    %tr.fn-source{ :class => ( source.is_disabled ? 'error' : '' ) }
       %td= source.name
       %td= source.url
       %td= source.tag.name unless source.tag.blank?

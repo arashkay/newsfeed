@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029055400) do
+ActiveRecord::Schema.define(:version => 20131029235310) do
 
   create_table "post_tags", :force => true do |t|
     t.integer  "post_id",    :null => false
@@ -40,11 +40,12 @@ ActiveRecord::Schema.define(:version => 20131029055400) do
   create_table "sources", :force => true do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.text     "format"
     t.integer  "tag_id"
     t.integer  "category_id"
+    t.boolean  "is_disabled", :default => false
   end
 
   add_index "sources", ["tag_id"], :name => "sources_tag_id_fk"

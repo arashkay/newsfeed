@@ -7,6 +7,8 @@ class Source < ActiveRecord::Base
 
   validates :name, :url, :presence => true
 
+  scope :active, where( :is_disabled => false )
+
   def self.new_with_format
     object = self.new
     object.format = { :title => '', :description => '', :url => '', :image => '', :summary => '' }
@@ -14,14 +16,18 @@ class Source < ActiveRecord::Base
   end
   
   def self.fetch
-    Source.all.each do |source|
+    Source.active.all.each do |source|
       source.fetch
     end
   end
 
   def fetch
-    reader = RSSReader.new
-    reader.read Post, self, url, format
+    begin
+      reader = RSSReader.new
+      reader.read Post, self, url, format
+    rescue
+      update_attribute :is_disabled, true
+    end
   end
 
 end

@@ -13,7 +13,7 @@ class RSSReader
       item = entity.new
       item.title = title
       item.source_id = source.id
-      item.summary = i.xpath(format["description"]).text unless format["description"].blank? 
+      item.summary = ActionView::Base.full_sanitizer.sanitize(i.xpath(format["description"]).text) unless format["description"].blank? 
       item.url = i.xpath(format["url"]).text.strip
       puts "- #{title} : #{item.url}"
       page = Nokogiri::HTML(open(URI.parse item.url).read)
