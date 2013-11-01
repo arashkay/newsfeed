@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029235310) do
+ActiveRecord::Schema.define(:version => 20131101063204) do
 
   create_table "post_tags", :force => true do |t|
     t.integer  "post_id",    :null => false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20131029235310) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "type_id"
   end
 
   add_foreign_key "post_tags", "posts", :name => "post_tags_post_id_fk"

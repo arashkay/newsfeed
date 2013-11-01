@@ -10,9 +10,18 @@ class TagsController < ApplicationController
     end
   end
 
+  def new
+    @tag = Tag.new
+    render 'edit'
+  end
+
   def create
     @tag = Tag.new params[:tag]
-    render :json => @tag.save
+    @tag.save
+    respond_to do |format|
+      format.html { redirect_to tags_path }
+      format.json { render :json => true }
+    end
   end
 
   def edit

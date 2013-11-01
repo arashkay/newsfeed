@@ -1,3 +1,8 @@
+.trends
+  %span.title خبرسازترین ها:
+  -@tags.each do |tag|
+    .trend
+      %span= tag.name
 .posts.fn-posts.fn-tagging
   - @posts.each do |post|
     .post.fn-post{ :data => { :dbid => post.id } }
@@ -5,7 +10,7 @@
         .thumb.fn-more{ :style => "background-image: url(#{post.image})" }
           .info
             %b= post.source.name
-            .tags
+            .tagging
               -post.tags.each do |tag|
                 .tag= tag.name
           %span.fn-taggable= post.title

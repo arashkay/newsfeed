@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title=t :posts
+    =render '/layouts/header'
+    =yield :head
+    =csrf_meta_tags
+  %body.reader.fn-reader
+    .menu.navbar.navbar-fixed-top
+      %a.logo{ :href => root_path }
+      .navbar-inner
+        .container-fluid
+          .reader-actions.fn-post{ data: { dbid: @post.id } }
+            %a.icon-signout{ :href => root_path }
+            %i.icon-heart-empty.fn-like{ :data => { :remote => like_post_path(@post, :format => :json ), :success => 'feed.posts.liked' } }
+            %i.icon-heart.fn-dislike{ :data => { :remote => dislike_post_path(@post, :format => :json ), :success => 'feed.posts.liked' } }
+            %span.likes.fn-likecount= @post.likes
+    .reader
+      %iframe{ src: @post.url, frameBorder: 0 }

@@ -10,7 +10,7 @@
         .actions
           %i.icon-chevron-sign-down.fn-more
           .pull-left
-            %a.icon-external-link.fn-url{ :href => post.url, :target => '_blank' }
+            %a.icon-external-link.fn-url{ :href => read_post_path(post) }
             %a.icon-align-justify.fn-read
             %span.likes.fn-likecount= post.likes
             %i.icon-heart-empty.fn-like{ :data => { :remote => like_post_path(post, :format => :json ), :success => 'feed.posts.liked' } }
@@ -24,6 +24,6 @@
       .modal-body.fn-news-body
       .modal-footer
         %a.btn.btn-success{ :href => '#', :data => { :dismiss => :modal } } بستن
-        %a.btn.fn-news-url{ :target => '_blank' }
+        %a.btn.fn-news-url
           %i.icon-external-link
           %span کامل بخوانید

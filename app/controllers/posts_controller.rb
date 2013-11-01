@@ -9,7 +9,13 @@ class PostsController < ApplicationController
 
   def list
     @posts = Post.where [ 'created_at > ?', Time.now-2.days ] 
+    @tags = Tag.trends
     respond_with @posts
+  end
+
+  def read
+    @post = Post.find params[:id]
+    render :layout => false
   end
 
   def last
@@ -25,13 +31,13 @@ class PostsController < ApplicationController
   def like
     @post = Post.find params[:id]
     @post.increment! :likes
-    render :json => @post
+    render :json => { id: @post.id, likes: @post.likes }
   end
   
   def dislike
     @post = Post.find params[:id]
     @post.decrement! :likes if @post.likes > 0
-    render :json => @post
+    render :json => { id: @post.id, likes: @post.likes }
   end
   
   def fetch

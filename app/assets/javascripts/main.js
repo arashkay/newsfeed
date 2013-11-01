@@ -13,6 +13,7 @@ $.extend(feed, {
     $('.fn-posts').on( 'click', '.fn-more, .fn-read, .fn-like, .fn-dislike, .fn-tagit, .fn-add-tag, .fn-cancel-tag', feed.posts.actions );
     $('.fn-taggable').mouseup( feed.tags.tag );
     if($('.fn-tagging').size()>0) feed.tags.highlight();
+    if($('.fn-reader').size()>0) feed.reader.init();
   },
   liking: function(){
     var likes = $.cookie('likes');
@@ -22,6 +23,12 @@ $.extend(feed, {
     $.each(feed.storage.likes, function(i,v){
       posts.filter('[data-dbid='+v+']').addClass('liked');
     });
+  },
+  reader: {
+    init: function(){
+      $('.fn-like').click(feed.posts.like);
+      $('.fn-dislike').click(feed.posts.dislike);
+    }
   },
   sources: {
     saved: function(data){
@@ -55,7 +62,7 @@ $.extend(feed, {
     save: function(){
       var post = $(this).parents('.fn-post');
       var tag = $('[name=tag]', post).val();
-      $.post( '/tags', { tag: { name: tag } }, feed.tags.saved );
+      $.post( '/tags.json', { tag: { name: tag } }, feed.tags.saved );
       $('.fn-taggable', post).popover('destroy');
     },
     highlight: function(){

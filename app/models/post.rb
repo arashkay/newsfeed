@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   
-  LIST_LIMIT = 100
+  LIST_LIMIT = 99
   LATEST_LIMIT = 50
   
   attr_accessible :image, :source_id, :summary, :title, :url, :body

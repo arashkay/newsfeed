@@ -10,12 +10,13 @@ Newsfeed::Application.routes.draw do
     end
 
     member do
+      get :read
       post :like
       post :dislike
     end
   end
 
-  resources :tags, :only => [:create, :index, :edit, :update]
+  resources :tags, :only => [:new, :create, :index, :edit, :update]
    
   match '/apps' => 'general#apps' 
   match '/:id' => 'posts#last' 
