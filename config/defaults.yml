@@ -1,0 +1,13 @@
+general:
+development:
+  news:
+    general: 1
+    sports: 2
+    politics: 3
+    economics: 4
+    technology: 5
+    sociology: 6
+  mobile_limit: 50
+  wall_limit: 99
+test:
+production:

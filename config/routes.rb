@@ -1,6 +1,10 @@
 Newsfeed::Application.routes.draw do
   
-  resources :sources, :only => [:index, :new, :create, :edit, :update, :destroy]
+  resources :sources, :only => [:index, :new, :create, :edit, :update, :destroy] do
+    member do
+      post :enable
+    end
+  end
   
   resources :posts, :only => :index do
     collection do
