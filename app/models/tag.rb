@@ -5,7 +5,7 @@ class Tag < ActiveRecord::Base
 
   validates :name, :uniqueness => true
   default_scope order('name ASC')
-  scope :trends, unscoped.select( 'tags.id, name, post_tags.id, count(tags.id) as cnt' ).where( 'type_id NOT IN (1, 2) OR type_id IS NULL' ).group('tags.id').joins(:post_tags).order('cnt DESC').limit(10)
+  scope :trends, unscoped.select( 'tags.id, name, count(tags.id) as cnt' ).where( 'type_id NOT IN (1, 2) OR type_id IS NULL' ).group('tags.id').joins(:post_tags).order('cnt DESC').limit(10)
 
   def name=(value)
     write_attribute :name, value.strip

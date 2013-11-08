@@ -19,8 +19,7 @@ class PostsController < ApplicationController
   end
 
   def last
-    @posts = Post.latest(params[:id]).all
-    render :json => @posts
+    render :json => Post.customise params[:types], params[:id]
   end
 
   def likes

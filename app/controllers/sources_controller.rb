@@ -38,8 +38,15 @@ class SourcesController < ApplicationController
   end
 
   def destroy
-    #@source = Source.find params[:id]
-    #render :json => @source.destroy
+    @source = Source.find params[:id]
+    @source.update_attribute :is_disabled, true
+    render :json => @source
+  end
+
+  def enable
+    @source = Source.find params[:id]
+    @source.update_attribute :is_disabled, false
+    render :json => @source
   end
 
 end

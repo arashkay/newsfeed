@@ -1,18 +1,32 @@
 class Post < ActiveRecord::Base
   
-  LIST_LIMIT = 99
-  LATEST_LIMIT = 50
-  
   attr_accessible :image, :source_id, :summary, :title, :url, :body
   belongs_to :source
   has_many :post_tags
   has_many :tags, :through => :post_tags
 
   default_scope order('created_at DESC')
-  scope :recent, limit(Post::LIST_LIMIT)
+  scope :recent, limit(Kalagheh::CONFIGS['wall_limit'])
+  
+  def self.types( ids=[] )
+    return self if ids.blank?
+    ids = [ids] unless ids.is_a? Array
+    ids.empty? ? self : joins(:post_tags).where( post_tags: { tag_id: ids } ) 
+  end
 
   def self.latest(id)
-    self.where(['id>?', id]).limit(Post::LATEST_LIMIT)
+    where(['posts.id>?', id]).limit(Kalagheh::CONFIGS['mobile_limit'])
+  end
+
+  def self.customise( types, last )
+    posts = Post.types(types).latest(last).all
+    if posts.blank?
+      return []
+    elsif posts.size<=30
+      return posts
+    end
+    max = 30 if (posts.size>30) 
+    posts.sample max
   end
   
   def self.auto_tag_last100

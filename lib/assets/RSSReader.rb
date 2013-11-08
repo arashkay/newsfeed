@@ -22,6 +22,7 @@ class RSSReader
         item.image = image[0].attr('src')
       end
       item.body = page.css(format["summary"]).text.truncate(FULLPOST_LIMIT) unless format["summary"].blank? 
+      item.likes = Random.rand 20
       item.save
       PostTag.find_or_create_by_tag_id_and_post_id( { :tag_id => source.tag_id, :post_id => item.id } ) if source.tag_id
       PostTag.find_or_create_by_tag_id_and_post_id( { :tag_id => source.category_id, :post_id => item.id } ) if source.category_id

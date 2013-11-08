@@ -13,4 +13,5 @@
       %td= source.category.name unless source.category.blank?
       %td
         %a.btn{ :href => edit_source_path(source) } Change
-        %a.btn.btn-warning{ :data => { :remote => source_path(source), :success => 'feed.sources.deleted' , :method => 'DELETE' } } Destory
+        %a.btn.btn-warning{ :data => { :remote => source_path(source), :success => 'feed.sources.disabled' , :method => 'DELETE' } } Disable
+        %a.btn.btn-success{ :data => { :remote => enable_source_path(source), :success => 'feed.sources.enabled' , :method => 'POST' } } Enable

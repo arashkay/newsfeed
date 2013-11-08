@@ -35,8 +35,11 @@ $.extend(feed, {
       if(data.id)
         location.href= '/sources';
     },
-    deleted: function(data){
-      $(this).parents('.fn-source').fadeOut();
+    disabled: function(data){
+      $(this).parents('.fn-source').addClass('error');
+    },
+    enabled: function(data){
+      $(this).parents('.fn-source').removeClass('error');
     }
   },
   tags: {
