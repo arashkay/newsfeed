@@ -9,7 +9,9 @@ gem 'mysql2'
 gem 'nokogiri'
 gem 'foreigner'
 gem 'haml-rails'
-gem 'capistrano'
+gem 'capistrano', '2.15.5'
+#gem 'capistrano-rvm'
+#gem 'capistrano-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

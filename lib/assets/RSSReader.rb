@@ -11,6 +11,8 @@ class RSSReader
       title = format["title"].blank? ? nil : i.xpath(format['title']).text 
       next if title.blank?
       url = i.xpath(format["url"]).text.strip
+      trashed_item = Trash.find_by_url url
+      next unless trashed_item.blank?
       olditem = entity.find_by_url url
       next unless olditem.blank?
       puts "- #{title} : #{url}"
@@ -18,9 +20,11 @@ class RSSReader
       item.summary = ActionView::Base.full_sanitizer.sanitize(i.xpath(format["description"]).text) unless format["description"].blank? 
       page = Nokogiri::HTML(open(URI.parse item.url).read)
       image = page.css(format["image"])
-      unless image.blank?
-        item.image = image[0].attr('src')
+      if image.blank? # just list posts which has images
+        Trash.create( :url => item.url )
+        next 
       end
+      item.image = image[0].attr('src')
       item.body = page.css(format["summary"]).text.truncate(FULLPOST_LIMIT) unless format["summary"].blank? 
       item.likes = Random.rand 20
       item.save

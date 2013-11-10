@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   
   attr_accessible :image, :source_id, :summary, :title, :url, :body
   belongs_to :source
-  has_many :post_tags
+  has_many :post_tags, :dependent => :destroy
   has_many :tags, :through => :post_tags
 
   default_scope order('created_at DESC')
@@ -44,6 +44,11 @@ class Post < ActiveRecord::Base
 
   def as_json(options={})
     super( :only => [ :id, :title, :summary, :url, :image, :likes, :body ] )
+  end
+
+  def self.clean_oldies
+    oldest_item = Post.limit(Kalagheh::CONFIGS['news_stack']).select(:id).last.id
+    destroy_all [ 'id < ?', oldest_item ]
   end
 
 end

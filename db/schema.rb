@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101063204) do
+ActiveRecord::Schema.define(:version => 20131110232637) do
 
   create_table "post_tags", :force => true do |t|
     t.integer  "post_id",    :null => false
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20131101063204) do
     t.datetime "updated_at", :null => false
     t.integer  "type_id"
   end
+
+  create_table "trashes", :force => true do |t|
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "trashes", ["url"], :name => "index_trashes_on_url"
 
   add_foreign_key "post_tags", "posts", :name => "post_tags_post_id_fk"
   add_foreign_key "post_tags", "tags", :name => "post_tags_tag_id_fk"

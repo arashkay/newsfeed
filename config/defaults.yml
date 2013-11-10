@@ -1,4 +1,7 @@
 general:
+  mobile_limit: 50
+  wall_limit: 99
+  news_stack: 800
 development:
   news:
     general: 1
@@ -7,7 +10,12 @@ development:
     economics: 4
     technology: 5
     sociology: 6
-  mobile_limit: 50
-  wall_limit: 99
 test:
 production:
+  news:
+    general: 42
+    sports: 44
+    politics: 86
+    economics: 89
+    technology: 87
+    sociology: 88

@@ -19,7 +19,8 @@ class PostsController < ApplicationController
   end
 
   def last
-    render :json => Post.customise params[:types], params[:id]
+    params[:types] = Kalagheh::NEWS::GENERAL if params[:types].blank?
+    render :json => Post.customise( params[:types], params[:id])
   end
 
   def likes
