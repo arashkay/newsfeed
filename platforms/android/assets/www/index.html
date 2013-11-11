@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.swipe.min.js"></script>
     <script type="text/javascript" src="js/jquery.template.min.js"></script>
+    <script type="text/javascript" src="js/ui.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/db.js"></script>
     <title>کلاغه</title>
   </head>
   <body>
@@ -17,7 +20,37 @@
       <div class='fn-blocker main-loader'>
         <div class='icon'></div>
       </div>
-      <div class='pages''>
+      <div class='pages'>
+        <div class='page fn-settings fn-page'>
+          <div class='page-header'>
+            <i class='icon-remove-sign fn-close'></i>
+          </div>
+          <div class='page-content'>
+            <h2>تنظیمات</h2>
+            <div class='checkbox' data-checkbox='main.settings.news'>
+              <i class='icon-check-empty'></i>
+              <input type='checkbox' value='news.general'/>
+              <span>اخبار عمومی</span>
+            </div>
+            <div class='checkbox' data-checkbox='main.settings.news'>
+              <i class='icon-check-empty'></i>
+              <input type='checkbox' value='news.sports'/>
+              <span>اخبار ورزشی</span>
+            </div>
+            <div class='checkbox' data-checkbox='main.settings.news'>
+              <i class='icon-check-empty'></i>
+              <input type='checkbox' value='news.politics'/>
+              <span>اخبار سیاسی</span>
+            </div>
+            <div class='checkbox' data-checkbox='main.settings.news'>
+              <i class='icon-check-empty'></i>
+              <input type='checkbox' value='news.technology'/>
+              <span>اخبار تکنولوژی</span>
+            </div>
+            <h4>خبر فوری</h4>
+            <p>سیستم دریافت خبر فوری به زودی در کلاغه افزوده خواهد شد.</p>
+          </div>
+        </div>
         <div class='page fn-about fn-page'>
           <div class='page-header'>
             <i class='icon-remove-sign fn-close'></i>
@@ -26,7 +59,22 @@
             <h2>تیم ما</h2>
             <p>تیم همراه سازان ، تیم تخصصی توسعه  و ساخت برنامه های تلفن هوشمند و وب.</p>
             <h3>تماس با ما </h3>
-            <p><a data-href='http://www.kalagheh.com/app'>www.kalagheh.com</a></p>
+            <p><a class='en' data-href='http://www.tectual.com.au?app=kalagheh'>www.tectual.com.au</a></p>
+          </div>
+        </div>
+        <div class='page fn-help fn-page'>
+          <div class='page-header'>
+            <i class='icon-remove-sign fn-close'></i>
+          </div>
+          <div class='page-content'>
+            <h2>راهنما</h2>
+            <p>کلاغه یک خبررسان هوشمند است که با شناخت علایق شما اخبار مرتبط را جمع آوری کرده و در جیبتان قرار میدهد.</p>
+            <h4><i class='icon-heart'></i></h4>
+            <p>اگر مطلبی را دوست دارید آنرا علامت بزنید تا کلاغه سلایق شما را یاد بگیرد.</p>
+            <h4><i class='icon-hand-left'></i></h4>
+            <p>اگر مطلبی را دوست ندارید با کشیدن انگشت روی خبر از راست به چپ آنرا حذف کنید. </p>
+            <h4><i class='icon-list icon-flip-horizontal'></i></h4>
+            <p>از طریق منوی تنظیمات گروه های خبری خود را تعریف کنید.</p>
           </div>
         </div>
       </div>
@@ -37,10 +85,10 @@
         </div>
       </div>
       <div class='menu fn-menu'>
-        <a data-href='http://kalagheh.com/apps'><i class='icon-android'></i><span>برنامه های دیگر</span></a>
-        <a class='fn-about-btn'><i class='icon-beaker'></i><span>درباره تیم ما</span></a>
-        <div class='divider'></div>
-        <a class='fn-about-btn'><i class='icon-beaker'></i><span>درباره تیم ما</span></a>
+        <a data-page='.fn-settings'><i class='icon-gears'></i><span>تنظیمات</span></a>
+        <a data-page='.fn-help'><i class='icon-question-sign'></i><span>راهنما</span></a>
+        <a data-href='http://kalagheh.com/apps?app=kalagheh'><i class='icon-android'></i><span>برنامه های دیگر</span></a>
+        <a data-page='.fn-about'><i class='icon-beaker'></i><span>درباره تیم ما</span></a>
       </div>
       <div class='content'>
         <div class='loader fn-loader'></div>
@@ -48,14 +96,19 @@
           <div class='post fn-post' loop='true' data-dbid='%#id%' fn='main.posts.liked'>
             <div class='thumb fn-more' style='background-image: url(%#image%)'>
               <span class='title'>%#title%</span>
+              <div class='extra-actions'>
+                <i class='icon-envelope fn-sms'></i>
+                <i class='icon-external-link-sign' data-href='%#url%'></i>
+              </div>
             </div>
             <div class='fn-description'>
-              <p>%#summary%</p>
+              <p class='short'>%#summary%</p>
+              <p class='long'>%#body%</p>
             </div>
             <div class='actions'>
               <i class='icon-chevron-sign-down fn-more'></i>
               <div class='pull-left'>
-                <i class='icon-external-link' data-href='%#url%'></i>
+                <a class='icon-align-justify fn-read'></a>
                 <span class='counts'>%#likes%</span>
                 <i class='icon-heart-empty fn-like'></i>
                 <i class='icon-heart fn-dislike'></i>
@@ -66,7 +119,6 @@
         <div class='posts fn-posts'></div>
       </div>
     </div>
-    <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
       app.initialize();

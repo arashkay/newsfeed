@@ -11,7 +11,7 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    font-size:12px;
+    font-size:18px;
     font-family: Beiroot,'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     color: #333;
     height:100%;
@@ -24,6 +24,7 @@ body {
 body, #main{
   background: #ddd;
 }
+
 .main-loader{
   display: none;
   z-index: 10002;
@@ -75,47 +76,52 @@ body, #main{
   text-align: left;
 }
 .page-header i{
-  font-size: 2.8em;
   color: #555;
+  font-size: 1.6em;
 }
 .pages .page-content{
   position: relative;
   clear: both;
+  padding-bottom: 5px;
 }
 .pages a{
   color: #32A3FF;
   border-bottom: #32A3FF 1px dashed;
 }
-.page{
-  font-size: 1.6em;
+.pages .en{
+  font-size: 0.6em;
 }
-.page h2{
-  font-size: 2.2em;
+.page{
+}
+.page h2, .page h3, .page h4{
+  font-size: 1.3em;
   color: #555;
-  margin: 1% 0 0.5%;
+  margin: 0.2em 0 0.1em;
+  font-weight: bold;
 }
 .page h3{
-  font-size: 1.5em;
-  color: #555;
-  margin: 1% 0 0.5%;
+  font-size: 1.1em;
+}
+.page h4{
+  color: #777;
+  font-size: 1em;
 }
 .page p{
-  margin: %1 0;
-  font-size: 1.2em;
+  margin: 0.1em 0;
 }
 .header{
   background: #fff;
   top: 0;
   box-shadow: 0 0 5px #333;
   border-bottom: none;
-  height: 50px;
+  height: 30px;
   overflow: hidden;
   position: fixed;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 1000;
-  padding: 7px 0 2px;
+  padding: 5px 0 3px;
   direction: rtl;
 }
 .header .logo, .header .actions{
@@ -131,7 +137,6 @@ body, #main{
 }
 .header h1{
   margin: 0.2em 0.3em;
-  font-size: 22px;
   color: #555;
   text-shadow: none;
   text-align: right;
@@ -146,9 +151,9 @@ body, #main{
   margin: 0 0.3em;
 }
 .header i{
-  font-size: 45px;
   color: #32A3FF;
   margin: 0 0.2em;
+  font-size: 1.6em;
   vertical-align: middle;
 }
 .header .bordered{
@@ -158,15 +163,14 @@ body, #main{
   border-left: #ddd 1px solid;
 }
 body .content{
-  padding: 60px 2px 5px;
+  padding: 37px 2px 5px;
   clear: both;
-  font-size: 24px;
 }
 .menu{
   z-index: 991;
   left: 0;
   display: none;
-  margin-top: 50px;
+  margin-top: 30px;
   position: fixed;
   background: #fff;
   padding-top: 10px;
@@ -187,7 +191,6 @@ body .content{
   color: #32A3FF;
   background: #fff;
   border-bottom: #32A3FF 2px solid;
-  font-size: 32px;
 }
 .menu a span{
   padding: 0 5px;
@@ -216,7 +219,7 @@ body .content{
 }
 .posts .post .thumb{
   width: 100%;
-  height: 260px;
+  height: 180px;
   background-position: center;
   background-size: cover;
   position: relative;
@@ -230,31 +233,63 @@ body .content{
   color: #fff;
   text-shadow: 1px 1px 1px #000;
   padding: 5px;
-  font-size: 26px;
 }
 .posts .post .actions{
   background: #fff;
   color: #888;
-  height: 42px;
+  height: 1.4em;
+  font-size: 1.4em;
+  line-height: 1.4em;
   overflow: hidden;
-  padding: 0px 10px 8px;
-  font-size: 34px;
+  padding: 0px 10px 1px;
 }
 .posts .fn-description{
+  background: #fff;
   display: none;
   border-bottom: #ddd 1px solid;
 }
 .posts .fn-description p{
-  background: #fff;
   padding: 8px 5px;
   margin: 0;
 }
+.posts .post .long{
+  display: none;
+}
+.posts .post.long .short{
+  display: none;
+}
+.posts .post.long .long{
+  display: block;
+}
+.posts .post .extra-actions{
+  display: inline-block;
+  background: rgba(0,0,0,.7);
+  color: #bbb;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  border-radius: 0 0 5px 0;
+  line-height: 1.2em;
+  padding:  2px 4px;
+  margin: 0;
+  font-size: 1.2em;
+}
+.posts .post .extra-actions *{
+  margin: 0px 4px;
+  padding: 0;
+}
+
+.posts .post .extra-actions *,
 .posts .post .actions *{
   vertical-align: middle;
 }
 .posts .post .counts{
   padding-left: 2px;
-  font-size: 28px;
+}
+.posts .post a{
+  margin-left: 8px;
+  margin-right: 8px;
 }
 .posts .post .fn-like{
   color: #777;
@@ -304,3 +339,21 @@ body .content{
   float: left;
 }
 
+.checkbox{
+  padding: 5px 8px;
+  margin: 1px 3px 1px 0;
+}
+.checkbox input{
+  display: none;
+}
+.checkbox i{
+  color: #666;
+}
+.checkbox i.icon-check-sign{
+  color: #32A3FF;
+}
+.checkbox.checked{
+  background: #eee;
+  border-right: #ddd 6px solid;
+  margin: 1px 0px 1px 0;
+}

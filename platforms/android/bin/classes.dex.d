@@ -42,6 +42,17 @@
 /Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/file/InvalidModificationException.class \
 /Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/file/NoModificationAllowedException.class \
 /Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/file/TypeMismatchException.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$1.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$2.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$3$1.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$3$2.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$3$3.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$3$4.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$3$5.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$3.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$InAppBrowserClient.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser.class \
+/Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppChromeClient.class \
 /Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
 /Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/networkinformation/NetworkManager.class \
 /Users/arash/Projects/etc/phonegap3/kalagheh/platforms/android/bin/classes/org/apache/cordova/splashscreen/SplashScreen.class \
