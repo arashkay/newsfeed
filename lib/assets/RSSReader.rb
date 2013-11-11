@@ -8,7 +8,8 @@ class RSSReader
   def read( entity, source, url, format )
     logger = Logger.new "#{Rails.root}/log/rss_reader.log"
     puts "#{source.name} : #{url}"
-    xml = Nokogiri::XML(open(URI.parse url).read)
+    uri = URI.parse url
+    xml = Nokogiri::XML(open(uri).read)
     xml.xpath("//item").each do |i|
       title = format["title"].blank? ? nil : i.xpath(format['title']).text 
       next if title.blank?
@@ -28,6 +29,7 @@ class RSSReader
           next 
         end
         item.image = image[0].attr('src')
+        item.image = "http://#{uri.host}/#{item.image.sub(/^\//,'')}" unless item.image.match /^http/
         item.body = page.css(format["summary"]).text.truncate(FULLPOST_LIMIT) unless format["summary"].blank? 
         item.summary = item.body.truncate(SUMMARY_LIMIT) if item.summary.blank?
         item.likes = Random.rand 20
