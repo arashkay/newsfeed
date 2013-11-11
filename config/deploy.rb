@@ -2,7 +2,7 @@ set :application, "kalagheh"
 set :deploy_to,  "/var/www/kalagheh.com"
 server "106.186.120.146", :web, :app, :db, :primary => true
 set :user, "webmaster"
-ssh_options[:keys] = [~/.ssh/ashmaclinode]
+ssh_options[:keys] = ['~/.ssh/ashmaclinode']
 #set :deploy_to,  "/home/arashvps/kalagheh.com"
 #server "ps49055.dreamhost.com", :web, :app, :db, :primary => true
 #set :user, "arashvps"
