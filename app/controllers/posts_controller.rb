@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  
+
+  before_filter :detect_device!, :only => [:last, :like, :dislike]
   respond_to :json, :html
 
   def index
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def last
+    @device.update_attribute :last_check, Time.now unless @device.blank?
     params[:types] = Kalagheh::NEWS::GENERAL if params[:types].blank?
     render :json => Post.customise( params[:types], params[:id])
   end

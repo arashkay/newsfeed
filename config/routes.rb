@@ -20,6 +20,12 @@ Newsfeed::Application.routes.draw do
     end
   end
 
+  resources :devices, :only => [] do
+    collection do
+      post :register
+    end
+  end
+
   resources :tags, :only => [:new, :create, :index, :edit, :update]
    
   match '/apps' => 'general#apps' 

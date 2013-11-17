@@ -3,7 +3,7 @@ require 'open-uri'
 class RSSReader
 
   FULLPOST_LIMIT = 1000
-  SUMMARY_LIMIT = 160
+  SUMMARY_LIMIT = 50
   
   def read( entity, source, url, format )
     logger = Logger.new "#{Rails.root}/log/rss_reader.log"

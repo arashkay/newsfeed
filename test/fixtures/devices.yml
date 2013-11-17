@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  did: MyString
+  regid: MyString
+  last_check: 2013-11-17 20:27:36
+
+two:
+  did: MyString
+  regid: MyString
+  last_check: 2013-11-17 20:27:36
